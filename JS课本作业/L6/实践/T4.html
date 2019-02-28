@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-size: 12px;
+        }
+
+        #register fieldset {
+            border: 1px solid #ccc;
+            width: 670px;
+            padding: 10px;
+        }
+
+        #register fieldset legend {
+            margin-left: 20px;
+        }
+
+        #register label {
+            width: 70px;
+            display: block;
+            float: left;
+            text-align: right;
+        }
+
+        #register .txt {
+            border: 1px solid #ccc;
+            width: 130px;
+        }
+
+        #register span {
+            color: red;
+        }
+    </style>
+    <script>
+        function getId(id) {//获取指定id的html页面元素对象
+            return document.getElementById(id);
+        }
+
+        function checkName() {
+            var name = getId("txtName").value;
+            var name_prompt = getId("span_name");
+            var nameReg = /^[0-9a-zA-Z][0-9a-zA-Z_.-]{2,16}[0-9a-zA-Z]$/;
+            if (!nameReg.test(name)) {
+                name_prompt.innerHTML = "错误，由字母、数字、下划线、点、减号组成的4-18位字符，以数字、字母开头或结尾";
+                return false;
+            }
+            name_prompt.innerHTML = "格式正确";
+            return true;
+        }
+
+        function checkNick() {
+            var nick = getId("txtNick").value;
+            var nick_prompt = getId("span_nick");
+            var nickReg = /^([\u4e00-\u9fa5]|\w)+$/;
+            var chinaReg = /[\u4e00-\u9fa5]/g;   //匹配中文字符
+            var len = nick.replace(chinaReg, "ab").length;  //把中文字符转换为两个字母，以计算字符长度
+            if (!nickReg.test(nick)) {
+                nick_prompt.innerHTML = "错误，包含汉字、字母、数字、下划线的4-20位字符，汉字占两个字符";
+                return false;
+            }
+            if (len < 4 || len > 20) {
+                nick_prompt.innerHTML = "错误，长度为4－20个字符，一个汉字占两个字符";
+                return false;
+            }
+            nick_prompt.innerHTML = "格式正确";
+            return true;
+        }
+
+        function checkEmail() {
+            var email = getId("txtEmail").value;
+            var email_prompt = getId("span_email");
+            var emailReg = /^\w+@\w+(\.[a-zA-Z]{2,3}){1,2}$/;
+            if (!emailReg.test(email)) {
+                email_prompt.innerHTML = "错误，如hlx@tom.com或者hlx@sina.com.cn";
+                return false;
+            }
+            email_prompt.innerHTML = "格式正确";
+            return true;
+        }
+
+        function checkPwd() {
+            var pwd = getId("txtPwd").value;
+            var pwd_prompt = getId("span_pwd");
+            var pwdReg = /^[a-zA-Z0-9]{4,10}$/;
+            if (!pwdReg.test(pwd)) {
+                pwd_prompt.innerHTML = "错误，由英文字母和数字组成的4—10位字符";
+                return false;
+            }
+            pwd_prompt.innerHTML = "格式正确";
+            return true;
+        }
+
+        function checkConfirmPwd() {
+            var confirmPwd = getId("txtConfirmPwd").value;
+            var pwd = getId("txtPwd").value;
+            var confirmPwd_prompt = getId("span_confirmPwd");
+            if (pwd != confirmPwd) {
+                confirmPwd_prompt.innerHTML = "错误，两次输入的密码不一致";
+                return false;
+            }
+            confirmPwd_prompt.innerHTML = "密码正确";
+            return true;
+        }
+
+        function checkPhone() {
+            var phone = getId("txtPhone").value;
+            var phone_prompt = getId("span_phone");
+            var phoneReg = /^(13|15|18)\d{9}$/;
+            if (!phoneReg.test(phone)) {
+                phone_prompt.innerHTML = "错误，手机号由11位数字组成，且以13、15、18开头";
+                return false;
+            }
+            phone_prompt.innerHTML = "格式正确";
+            return true;
+        }
+
+        function checkId() {
+            var id = getId("txtId").value;
+            var id_prompt = getId("span_Id");
+            var idReg = /^\d{15}$|^\d{18}$/;
+            if (!idReg.test(id)) {
+                id_prompt.innerHTML = "错误，身份证由15位或者18位数字组成";
+                return false;
+            }
+            id_prompt.innerHTML = "格式正确";
+            return true;
+        }
+        function checkForm() {
+            return checkName() && checkNick() && checkEmail() && checkPwd() && checkConfirmPwd() && checkPhone() && checkId();
+        }
+    </script>
+</head>
+<body>
+<div id="header"><img src="images/register_logo.gif"/></div>
+<div id="register">
+    <form onsubmit="return checkForm()" action="ll.html">
+        <fieldset>
+            <legend>请填写注册信息</legend>
+            <p>
+                <label>用户名：</label>
+                <input name="" type="text" id="txtName" class="txt" onblur="checkName()"/>
+                <span id="span_name">由字母、数字、下划线、点、减号组成的4-18位字符，以数字、字母开头或结尾</span></p>
+            <p>
+                <label>昵称：</label>
+                <input name="" type="text" id="txtNick" class="txt" onblur="checkNick()"/>
+                <span id="span_nick">包含汉字、字母、数字、下划线的4-20位字符,汉字占两个字符</span></p>
+            <p>
+                <label>邮箱：</label>
+                <input name="" type="text" id="txtEmail" class="txt" onblur="checkEmail()"/>
+                <span id="span_email">邮箱账号@域名,如：good@tom.com、whj@sina.com.cn</span></p>
+            <p>
+                <label>密码：</label>
+                <input name="" type="password" id="txtPwd" class="txt" onblur="checkPwd()"/>
+                <span id="span_pwd">由英文字母和数字组成的4—10位字符。</span></p>
+            <p>
+                <label>确认密码：</label>
+                <input name="" type="password" id="txtConfirmPwd" class="txt" onblur="checkConfirmPwd()"/>
+                <span id="span_confirmPwd"></span></p>
+            <p>
+                <label>手机号码：</label>
+                <input name="" type="text" id="txtPhone" class="txt" onblur="checkPhone()"/>
+                <span id="span_phone">手机号由11位数字组成，且以13、15、18开头</span></p>
+            <p>
+                <label>身份证：</label>
+                <input name="" type="text" id="txtId" class="txt" onblur="checkId()"/>
+                <span id="span_Id">由15位或18位数字组成</span></p>
+            <input type="image" src="images/button.gif" value="提交"/>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

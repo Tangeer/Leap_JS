@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第七题</title>
+    <script>
+        var emps = new Array();
+        emps['请选择'] = ['请选择'];
+        emps['北京'] = ['请选择','海定','门头','房山','大兴','顺义'];
+        emps['湖北省'] = ['请选择','武汉','宜昌','荆州','黄冈','黄石'];
+        emps['甘肃省'] = ['请选择','兰州','白银','天水','武威','金昌'];
+        function initData() {
+            var proObj = document.getElementById("selProvince");
+            for (var index in emps){
+                var option = document.createElement("option");
+                option.text = index;
+                option.value = index;
+                proObj.options.add(option);
+            }
+        }
+        function fillCity() {
+            var cityObj = document.getElementById("selCity");
+            cityObj.options.length = 0;
+            var currentPro = document.getElementById("selProvince").value;
+            for (var index in emps[currentPro]){
+                var option = document.createElement("option");
+                option.text = emps[currentPro][index];
+                option.value = emps[currentPro][index];
+                cityObj. options.add(option);//追加
+            }
+        }
+    </script>
+</head>
+<body onload="initData(),fillCity()">
+<h2>选择所在的省份及城市</h2>
+<p>省份：<select id="selProvince" onchange="fillCity()"></select>
+    城市:&nbsp;<select id="selCity"></select>
+</p>
+</body>
+</html>

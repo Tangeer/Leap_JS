@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery UI</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //设置拖动时的效果
+            var setting={opacity:0.5, //拖拽过程中透明度
+                containment:"parent",//拖拽的区域
+                revert:false//拖拽结束后是否返回原地，true:返回，false:不返回
+            };
+            $("#divDemo>img").draggable(setting);
+        });
+    </script>
+    <style type="text/css">
+        div#divDemo{
+            width:400px;
+            height:200px;
+            border:1px solid #F00;
+        }
+    </style>
+</head>
+
+<body>
+<div id="divDemo">
+    <img src="images/kimi.jpg" width="150" />
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>下拉级联菜单</title>
+<link href="css/demo.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/demo.js"></script>
+</head>
+
+<body>
+<div id="container"> <!--顶级容器-->
+  <div id="menu">
+      <ul class="first" id="nav"> <!--顶级菜单-->
+         <li><a href="#">首页</a></li>
+         <li><a href="#">文化</a>
+             <ul><!--二级菜单-->
+                <li><a href="#">企业文化</a></li>
+                <li><a href="#">企业精神</a></li>
+                <li><a href="#">经营理念</a></li>
+             </ul> 
+         </li>
+         <li><a href="#">新闻</a>
+               <ul>
+                <li><a href="#">公司新闻</a></li>
+                <li><a href="#">产品发布新闻</a></li>
+               
+             </ul>
+         </li>
+         <li><a href="#">招聘</a>
+            <ul>
+                <li><a href="#">企业招聘</a>
+                    </li>
+                <li><a href="#">个人求职</a>
+                     <ul>
+                       <li><a href="#">java工程师</a></li>
+                        <li><a href="#">.net工程师</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">联系我们</a></li>
+               <li><a href="#">51job</a>
+               </li>
+               
+             </ul>
+         </li>
+      </ul>
+  </div><!--菜单版块结束-->
+  <div id="content">网页的主要内容</div>
+  </div>
+</body>
+</html>

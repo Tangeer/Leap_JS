@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第二题</title>
+</head>
+<body>
+<script>
+    //第一问
+
+        var today = new Date();
+        with(today){
+            var year = getFullYear();
+            var month = getMonth();
+            var day = getDate();
+            var hh = getHours();
+            var mm = getMinutes();
+            var ss = getSeconds();
+        }
+        document.write("今天是："+year+"年"+(month+1)+"月"+day+"日"+hh+"时"+mm+"分"+ss+"秒");
+
+       // 第二问
+    if (hh>=8 && hh<12) {
+        alert("早上好！欢迎登陆系统");
+    }else if(hh>=12 && hh<14){
+        alert("中午好！该休息了");
+    }else if(hh>=14 && hh<18){
+        alert("下午好！欢迎登陆系统");
+    }else{
+        alert("晚上好!");
+    }
+    document.write("<br/>");
+    document.write("<br/>");
+    //第三问
+   var day1 = new Date(year,month,day-1);//排除0月的情况
+   var preDay = day1.getDate();
+   var preWeek = day1.getDay();
+   if(day == 1){
+       document.write("昨天是："+year+"年"+month+"月"+preDay+"日"+hh+"时"+mm+"分"+ss+"秒");
+       document.write("<br/>");
+   }else{
+       document.write("昨天是："+year+"年"+(month+1)+"月"+preDay+"日"+hh+"时"+mm+"分"+ss+"秒");
+       document.write("<br/>");
+   }
+
+    if(preWeek == 0){
+            document.write("昨天是：星期"+(preWeek+7));
+        }else{
+            document.write("昨天是：星期"+preWeek);
+        }
+    document.write("<br/>");
+    document.write("<br/>");
+
+    var day2 = new Date(year,month,day+1);
+    var afterDay = day2.getDate();
+    var afterWeek = day2.getDay();
+    if(afterDay==1){
+        document.write("明天是："+year+"年"+(month+2)+"月"+afterDay+"日"+hh+"时"+mm+"分"+ss+"秒");
+    }else{
+        document.write("明天是："+year+"年"+(month+1)+"月"+afterDay+"日"+hh+"时"+mm+"分"+ss+"秒");
+    }
+    document.write("<br/>");
+    if(afterWeek == 0){
+        document.write("明天是：星期"+(afterWeek+7));
+    }else{
+        document.write("明天是：星期"+afterWeek);
+    }
+     document.write("<br/>");
+     document.write("<br/>");
+
+
+    var day3 = new Date(year,month-1,day);//排除0月的情况
+    var preMonth = day3.getMonth();
+    var preWeek = day3.getDay();
+    document.write("上个月的今天是："+year+"年"+(preMonth+1)+"月"+day+"日"+hh+"时"+mm+"分"+ss+"秒");
+         document.write("<br/>");
+     if(preWeek == 0){
+             document.write("上个月的今天是：星期"+(preWeek+7));
+         }else{
+             document.write("上个月的今天是：星期"+preWeek);
+         }
+     document.write("<br/>");
+     document.write("<br/>");
+
+    var day4 = new Date(year,month+1,day);//排除0月的情况
+    var afterMonth = day4.getMonth();
+    var afterWeek = day4.getDay();
+    document.write("下个月的今天是："+year+"年"+(afterMonth+1)+"月"+day+"日"+hh+"时"+mm+"分"+ss+"秒");
+    document.write("<br/>");
+    if(afterWeek == 0){
+        document.write("下个月的今天是：星期"+(afterWeek+7));
+    }else{
+        document.write("下个月的今天是：星期"+afterWeek);
+    }
+
+</script>
+</body>
+</html>

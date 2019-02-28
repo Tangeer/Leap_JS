@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery应用</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#btnTitle").click(function () {
+                $(":header").css("color","#f00");
+            })
+            $("#btnEven").click(function () {
+                $("li:even").css("color","#00f");
+            })
+            $("#btnOdd").click(function () {
+                $("li:odd").css("color","#F93");
+            })
+        })
+
+    </script>
+</head>
+<body>
+<h1>基本过滤器</h1>
+<ul>
+    <li>基本过滤选择器</li>
+    <li>内容过滤选择器</li>
+    <li>可见性过滤选择器</li>
+    <li>属性过滤选择器</li>
+</ul>
+<input type="button" value="标题样式" id="btnTitle">
+<input type="button" value="索引是偶数项样式" id="btnEven">
+<input type="button" value="索引是奇数项样式" id="btnOdd">
+</body>
+</html>

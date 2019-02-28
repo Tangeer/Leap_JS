@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指导2</title>
+    <style>
+        #imgTip{
+            position: absolute;
+            border: 1px solid #ccc;
+            width: 300px;
+            height: 250px;
+            display: none;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+            var x=5,y=15;
+            $("img").mouseover(function (e) {
+                $("#imgTip").attr("src",this.src).css({"top":(e.pageY+y)+"px","left":(e.pageX+x)+"px"}).show();
+            });
+            $("img").mouseout(function () {
+                $("#imgTip").hide();
+            });
+        });
+    </script>
+</head>
+<body>
+<img src="images/xgll.jpg" width="150" height="100" id="smallimg"/>
+<img id="imgTip"/>
+</body>
+</html>

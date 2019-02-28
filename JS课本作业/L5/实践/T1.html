@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用添加接点的技能，动态展示食品的类型</title>
+</head>
+<body>
+<script>
+    function initType() {
+        var foodType = new Array("休闲零食","营养保健","参茸滋补","茶叶","酒类","全球美食","生鲜蔬果","粮油米面","奶粉乳品");
+        for (var i in foodType){
+            var obj = document.createElement("li");
+            obj.innerHTML = "<a href='#'>"+foodType[i]+"</a>";
+            obj.className = "info";
+            document.getElementById("foods").appendChild(obj);
+        }
+    }
+</script>
+</body>
+</html>

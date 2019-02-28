@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>利用array对象创建数组</title>
+</head>
+<body>
+<script>
+    var arr = new Array(3,3.2,"book",2);
+    arr.sort();
+    for (var i = 0;i<arr.length;i++){
+        document.write(i+":"+arr[i]+"<br/>");
+    }
+    document.write("<br/>");
+    arr.reverse();
+    for (var i = 0;i<arr.length;i++){
+        document.write(i+":"+arr[i]+"<br/>");
+    }
+</script>
+</body>
+</html>

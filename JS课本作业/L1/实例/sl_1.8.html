@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>摄氏温度</td>
+        <td>华氏温度</td>
+    </tr>
+    <script>
+        var f;
+        for(var c=0,count=1;count <=10 && c<=250;c=c+20,count++){
+            f = c*9/5+32;
+            document.write("<tr><td>"+c+"</td><td>"+f+"</td></tr>")
+        }
+    </script>
+</table>
+</body>
+</html>

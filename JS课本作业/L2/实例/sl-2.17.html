@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    请输入密码：<input type="password" id="txtpwd" onblur="checkPwd()"/>
+</p>
+<script>
+    function checkPwd() {
+        var pwd = document.getElementById("txtpwd").value;
+        if (pwd.length >= 6) {
+            alert("密码输入正确");
+        } else {
+            alert("密码的长度必须在6位以上");
+        }
+    }
+</script>
+</body>
+</html>

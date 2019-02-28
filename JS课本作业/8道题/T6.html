@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第六题</title>
+    <script>
+        function cb() {
+            var objCb = document.getElementById("allCb");
+            var objItems = document.getElementsByName("item");
+            for (var i=0;i<objItems.length;i++){
+                objItems[i].checked = objCb.checked;
+            }
+        }
+        function ib() {
+            var objItems = document.getElementsByName("item");
+            var objCb = document.getElementById("allCb");
+            for (var i =0;i<objItems.length;i++){
+                if (!objItems[i].checked) {
+                    objCb.checked = objItems[i].checked;
+                    return false;
+                }
+            }
+            objCb.checked = true;
+        }
+
+        function rb() {
+            var objItems = document.getElementsByName("item");
+            var objreverse = document.getElementById("reverse");
+            for (var i =0;i<objItems.length;i++){
+                if(objItems[i].checked){
+                    objItems[i].checked =false;
+                }else{
+                    objItems[i].checked =true;
+                }
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+<form name="myForm" action="#" method="get">
+    <table border="1px">
+        <tr bgcolor="orange">
+            <td><input type="checkbox" id="allCb" onclick="cb()"/>全选</td> <td>复选框全选示例</td> <td></td> <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="item" onclick="ib()"/>1</td> <td>作用：</td> <td></td> <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="item" onclick="ib()"/>2</td> <td>a.单击列头全选或全不选子项</td> <td></td> <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="item" onclick="ib()"/>3</td> <td>b.只要有一个子项没有选中，则取消列头的选中状态</td> <td></td> <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="item" onclick="ib()"/>4</td> <td>c.当所有子项选中时，列头复选框则自动置为选中状态</td> <td></td> <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="item" onclick="ib()"/>5</td> <td></td> <td></td> <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="item" onclick="ib()"/>6</td> <td></td> <td></td> <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="item" onclick="ib()"/>7</td> <td></td> <td></td> <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="item" onclick="ib()"/>8</td> <td></td> <td></td> <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="item" onclick="ib()"/>9</td> <td></td> <td></td> <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="item" onclick="ib()"/>10</td> <td>d.将复选框反过来选</td> <td></td> <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="reverse" onclick="rb()"/>反选</td> <td></td> <td></td> <td></td>
+        </tr>
+    </table>
+
+</form>
+</body>
+</html>

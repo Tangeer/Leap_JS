@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function check() {
+            var ob1 = document.getElementById("allCb");
+            var chs = document.getElementsByName("item");
+            for (var i=0;i<chs.length;i++){
+                chs[i].checked = ob1.checked;
+            }
+        }
+    </script>
+</head>
+<body>
+<table>
+    <tr>
+        <th><input type="checkbox" id="allCb" onclick = "check()"/>全选</th>
+    </tr>
+    <tr>
+        <th><input type="checkbox" name="item"/></th>
+    </tr>
+    <tr>
+        <th><input type="checkbox" name="item" /></th>
+    </tr>
+</table>
+</body>
+</html>

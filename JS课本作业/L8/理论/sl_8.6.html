@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增加CSS类</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <style>
+        .cls1{
+            font-weight: bold;
+            font-style: italic;
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+<p id="content">Write Less,Do More</p>
+<script type="text/javascript">
+    $(function () {
+        $("#content").click(function () {
+            $(this).toggleClass("cls1");
+        })
+    })
+</script>
+</body>
+</html>

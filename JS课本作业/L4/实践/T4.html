@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>美淘网注册页面</title>
+    <style>
+        body{
+            font-size: 12px;
+        }
+        fieldset{
+            border: 1px solid #cccccc;
+            width: 500px;
+            padding: 15px;
+        }
+        legend{
+            margin-left: 15px;
+        }
+        input.txt{
+            border: 1px solid #cccccc;
+            width: 140px;
+        }
+        p label{
+            display: block;
+            width: 80px;
+            text-align: right;
+            float: left;
+
+        }
+    </style>
+    <script>
+        function lightTxt(obj) {
+            obj.style.border = "1px solid #0094ff";
+        }
+        //验证邮箱
+        function checkEmail() {
+            var email = document.getElementById("txtEmail").value;
+            //动态设置边框颜色
+            document.getElementById("txtEmail").style.borderColor = "#ccc";
+            var spanObj = document.getElementById("emailInfo");
+            if (email==""){
+                spanObj.innerHTML = "请输入邮箱地址";
+                return false;
+            }
+            if (email.indexOf("@")==-1 || email.indexOf(".")==-1 ){
+                spanObj.innerHTML = "格式不正确，必须包含@和.";
+                return false;
+            }
+            spanObj.innerHTML = "邮箱正确"
+            return true;
+        }
+        //验证用户名
+        function checkName() {
+            var name = document.getElementById("txtName").value;
+            document.getElementById("txtName").style.borderColor = "#ccc";
+            var spanObj = document.getElementById("nameInfo");
+            if (name==""){
+                spanObj.innerHTML = "请输入用户名";
+                return false;
+            }
+            if (name.length<4 ||name.length>16){
+                spanObj.innerHTML = "格式不正确，长度在4到16位";
+                return false;
+            }
+            for (var i = 0;i < name.length;i++) {
+                //循环获取用户名的每一个字符
+                var content = name.substring(i, i + 1);
+                if (!isNaN(content)) {
+                    spanObj.innerHTML = "用户名不能包含数字";
+                    return false;
+                }
+            }
+            spanObj.innerHTML="用户名正确";
+            return true;
+        }
+        //验证密码
+        function checkPwd() {
+            var pwd = document.getElementById("txtPwd").value;
+            document.getElementById("txtPwd").style.borderColor = "#ccc";
+            var spanObj = document.getElementById("pwdInfo");
+            if (pwd==""){
+                spanObj.innerHTML = "请输入密码";
+                return false;
+            }
+            if (pwd.length<6 || pwd.length>32) {
+                spanObj.innerHTML = "格式不正确，长度在6到32位"
+                return false;
+            }
+            spanObj.innerHTML = "密码正确";
+            return true;
+        }
+        //验证确认密码
+        function checkConfirmPwd() {
+            var pwd=document.getElementById("txtPwd").value;
+            var pwd2=document.getElementById("txtConfirmPwd").value;
+            document.getElementById("txtConfirmPwd").style.borderColor = "#ccc";
+            var spanObj = document.getElementById("confirmPwdInfo");
+            if (pwd==""){
+                spanObj.innerHTML = "请再次输入密码";
+                return false;
+            }
+            if (pwd != pwd2) {
+                spanObj.innerHTML = "密码不一致，请重新输入";
+                return false;
+            }
+            spanObj.innerHTML = "密码一致";
+            return true;
+        }
+        //验证表单
+        function checkForm() {
+            return checkEmail() && checkName() && checkPwd() && checkConfirmPwd();
+        }
+
+    </script>
+</head>
+<body>
+<form action="hh.html" onsubmit="return checkForm()">
+    <fieldset>
+        <legend>用户注册</legend>
+        <p>
+            <label>邮箱：</label>
+            <input type="text" id="txtEmail" class="txt" onfocus="lightTxt(this)" onblur="checkEmail()"/>
+            <span id="emailInfo"></span>
+        </p>
+        <p>
+            <label>用户名：</label>
+            <input type="text" id="txtName" class="txt" onfocus="lightTxt(this)" onblur="checkName()"/>
+            <span id="nameInfo"></span>
+        </p>
+        <p>
+            <label>创建密码：</label>
+            <input type="password" id="txtPwd" class="txt" onfocus="lightTxt(this)" onblur="checkPwd()"/>
+            <span id="pwdInfo"></span>
+        </p>
+        <p>
+            <label>确认密码：</label>
+            <input type="password" id="txtConfirmPwd" class="txt" onfocus="lightTxt(this)" onblur="checkConfirmPwd()"/>
+            <span id="confirmPwdInfo"></span>
+        </p>
+        <p>
+            <input type="submit" value="提交"/>
+        </p>
+
+    </fieldset>
+
+</form>
+</body>
+</html>

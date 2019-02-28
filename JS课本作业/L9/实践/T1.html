@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>从订单表中，删除单行团购项目</title>
+    <style>
+        body{
+            font-family: Arial, Helvetice, sans-serif;
+            font-size:12px;
+            margin: 0px;
+        }
+        p{
+            margin: 0px;
+        }
+        #container{
+            height: 1200px;
+            /*text-align: center;*/
+            /*padding-top: 50px;*/
+            /*border:1px solid green;*/
+            width: 900px;
+            margin:0px auto;
+        }
+        #container table{
+            width: 600px;
+            border:1px solid red;
+            border-collapse:collapse;
+        }
+        #container table td{
+            border:1px solid red;
+        }
+        #mask{
+            background-color: gray;
+            left: 0px;
+            position: absolute;
+            top: 0px;
+            z-index: 100px;
+            filter:alpha(opacity=30);
+            opacity: 0.3;
+        }
+        #dialog{
+            background-color: #fff;
+            border:5px solid orange;
+            height: 150px;
+            left: 500px;
+            padding: 1px;
+            position: fixed;
+            top: 100px;
+            width: 300px;
+            z-index: 101;
+            display: none;
+        }
+        #dialog div#title{
+            background:#ccc;
+            overflow: hidden;//保证超出的部分隐藏起来
+        }
+        #dialog p.close{
+            float:right;
+            padding-right: 10px;
+            height: 24px;
+            line-height: 24px;
+            width: 40px;
+            cursor: pointer;
+        }
+        #dialog div#info{
+            text-align: center;
+            height: 80px;
+            line-height: 80px;
+        }
+        #dialog div#sure{
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script>
+        function showMask() {
+                var bh = $("body").height();
+                var bw = $("body").width();
+                $("div#mask").css({
+                    height:bh + "px",
+                    width: bw + "px",
+                    display:"block"
+                })
+        }
+        $(function () {
+            $("a.btnDel").click(function () {
+                delRowId = $(this).parents("tr").attr("id");
+                showMask();
+                $("#dialog").show();
+            });
+            $("#title p").click(function () {//关闭
+                $("#mask,#dialog").hide();
+            });
+            $("#btnSure").click(function () {//确认删除
+                $("table tr[id='"+delRowId+"']").remove();
+                $("#mask,#dialog").hide();
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="container">
+    <table>
+        <caption>订单表</caption>
+        <tr>
+            <td>选项</td>
+            <td>编号</td>
+            <td>项目</td>
+            <td>状态</td>
+            <td>数量</td>
+            <td>操作</td>
+        </tr>
+        <tr id="1001">
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>1001</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td><a href="#" class="btnDel" onclick="return false">删除</a></td>
+        </tr>
+        <tr id="1002">
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>1002</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td><a href="#" class="btnDel" onclick="return false">删除</a></td>
+        </tr>
+        <tr id="1003">
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>1003</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td><a href="#" class="btnDel" onclick="return false">删除</a></td>
+        </tr>
+        <tr>
+            <td colspan="6" style="text-align: left;height: 40px;padding-top:5px">
+                <input type="checkbox"/>全选&nbsp;&nbsp;
+                <input type="button" value="删除" id="btn"/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="dialog">
+    <div id="title">
+        <p class="close">关闭</p>
+    </div>
+    <div id="info">确认删除吗?</div>
+    <div id="sure">
+        <input type="button" value="确认" id="btnSure"/>
+    </div>
+</div>
+<div id="mask"></div>
+</body>
+</html>

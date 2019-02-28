@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度注册页面</title>
+    <style>
+        body{
+            font-size: 12px;
+        }
+        fieldset{
+            border: 1px solid #cccccc;
+            width: 800px;
+            padding: 15px;
+        }
+        legend{
+            margin-left: 15px;
+            font-size: 25px;
+        }
+        input.txt{
+            border: 1px solid #cccccc;
+            width: 240px;
+            height: 20px;
+        }
+        p label{
+            display: block;
+            width: 80px;
+            text-align: right;
+            float: left;
+            font-size: 15px;
+        }
+        p a{
+            font-size: 10px;
+        }
+        #txtBox{
+            margin-left: 80px;
+        }
+        #register{
+
+            width: 200px;
+            height: 50px;
+            background-color: blueviolet;
+            color: white;
+            font: bold 20px 微软雅黑;
+            text-align: center;
+        }
+    </style>
+    <script>
+        //设置高亮
+        function lightTxt(obj) {
+            obj.style.border = "1px solid blue";
+        }
+
+        //提示用户名信息
+        function tipName() {
+            var spanName = document.getElementById("nameInfo");
+            spanName.innerHTML = "设置后不可更改，中英文均可，最长14个英文或7个汉字";
+        }
+
+        //验证用户名
+        function checkName() {
+            var name = document.getElementById("txtName").value;
+            document.getElementById("txtName").style.borderColor = "#ccc";//动态设置边框颜色
+            var spanName = document.getElementById("nameInfo");
+            if (name == "") {
+                spanName.innerHTML = "请您输入用户名";
+                return false;
+            }
+            if (name.length > 14) {
+                spanName.innerHTML = "用户名不能超过7个汉字或14个字符";
+                return false;
+            }
+            var enSum = 0;
+            for (var i = 0; i < name.length; i++) {
+                if ((name.charCodeAt(i) >= 0) && (name.charCodeAt(i) <= 255)) {
+                    enSum = enSum + 1;
+                }
+            }
+            var zhSum = name.length - enSum;
+            if (enSum > 14 || zhSum > 7) {
+                spanName.innerHTML = "用户名不能超过7个汉字或14个字符";
+                return false;
+            }
+            var s = 0;//不能为纯数字
+            for (var i = 0; i < name.length; i++) {
+                //循环获取用户名的每一个字符
+                var content = name.substring(i, i + 1);
+                if (!isNaN(content)) {
+                    s = s + 1;
+                }
+            }
+            if (s == name.length) {
+                spanName.innerHTML = "用户名仅支持中英文、数字和下划线,且不能为纯数字";
+                return false;
+            }
+            spanName.innerHTML = "正确";
+            return true;
+        }
+
+        //提示 手机号码
+        function tipPhone() {
+            var spanPhone = document.getElementById("phoneInfo");
+            spanPhone.innerHTML = "请输入中国大陆手机号，其他用户不可见";
+        }
+
+        //验证手机号码
+        function checkPhone() {
+            var phone = document.getElementById("txtPhone").value;
+            document.getElementById("txtPhone").style.borderColor = "#ccc";//动态设置边框颜色
+            var spanPhone = document.getElementById("phoneInfo");
+            if (phone == "") {
+                spanPhone.innerHTML = "请您输入手机号码";
+                return false;
+            }
+            for (var i = 0; i < phone.length; i++) {
+                var content = phone.substring(i, i + 1);
+                if (isNaN(content)) {
+                    spanPhone.innerHTML = "手机号码格式不正确";
+                    return false;
+                }
+            }
+            if (phone.length > 11 || phone.length < 11) {
+                spanPhone.innerHTML = "手机号码格式不正确";
+                return false;
+            }
+            spanPhone.innerHTML = "正确";
+            return true;
+        }
+
+        //提示密码信息
+        function tipPwd() {
+            var spanPwd = document.getElementById("pwdInfo");
+            spanPwd.innerHTML = "长度为6到14个字符  数字，大小写字母和标点符号  不允许有空格";
+        }
+
+        //验证密码
+        function checkPwd() {
+            var pwd = document.getElementById("txtPwd").value;
+            document.getElementById("txtPwd").style.borderColor = "#ccc";//动态设置边框颜色
+            var spanPwd = document.getElementById("pwdInfo");
+            if (pwd == "") {
+                spanPwd.innerHTML = "请设置登录密码";
+                return false;
+            }
+            if (pwd.length < 6 || pwd.length > 14) {
+                spanPwd.innerHTML = "密码长度在6到14位之间";
+                return false;
+            }
+            for (var i = 0; i < pwd.length; i++) {
+                var content = pwd.substring(i, i + 1);
+                if (content == " ") {
+                    spanPwd.innerHTML = "不允许有空格";
+                    return false;
+                }
+            }
+            spanPwd.innerHTML = "正确";
+            return true;
+        }
+
+        //提示验证码
+        function tipCode() {
+            var spanCode = document.getElementById("codeInfo");
+            spanCode.innerHTML = "请输入验证码";
+        }
+
+        //验证码
+        function checkCode() {
+            var code = document.getElementById("txtCode").value;
+            document.getElementById("txtCode").style.borderColor = "#ccc";//动态设置边框颜色
+            var spanCode = document.getElementById("codeInfo");
+            if (code == "") {
+                spanCode.innerHTML = "请输入验证码";
+                return false;
+            }
+            spanCode.innerHTML = "正确";
+            return true;
+        }
+        function checkBox() {
+            var box = document.getElementById("txtBox").checked;
+            var spanBox = document.getElementById("boxInfo");
+            if (box == false) {
+                spanBox.innerHTML = "请勾选“阅读并接受百度用户协议”";
+                return false;
+            }
+        }
+        function checkForm() {
+            return checkName() && checkPhone() && checkPwd() && checkCode() && checkBox();
+        }
+    </script>
+</head>
+<body>
+<form action="hh.html" onsubmit="return checkForm()">
+    <fieldset>
+        <legend>百度用户注册</legend>
+        <p>
+            <label>用户名：</label>
+            <input type="text" class="txt" id="txtName" onfocus="lightTxt(this),tipName()" onblur="checkName()"/>
+            <span id="nameInfo"><img id="nameImg"></span>
+        </p>
+        <p>
+            <label>手机号：</label>
+            <input type="text" class="txt" id="txtPhone" onfocus="lightTxt(this),tipPhone()" onblur="checkPhone()"/>
+            <span id="phoneInfo"></span>
+        </p>
+        <p>
+            <label>密码：</label>
+            <input type="password" class="txt" id="txtPwd" onfocus="lightTxt(this),tipPwd()" onblur="checkPwd()"/>
+            <span id="pwdInfo"></span>
+        </p>
+        <p>
+            <label>验证码：</label>
+            <input type="password" class="txt" id="txtCode" onfocus="lightTxt(this),tipCode()" onblur="checkCode()"/>
+            <span id="codeInfo"></span>
+        </p>
+        <p>
+            <input type="checkbox" id="txtBox" onclick="checkBox()"><a>阅读并接受《百度用户协议》及《百度隐私权保护声明》
+            <span id="boxInfo"></span></a>
+
+        </p>
+
+        <p>
+            <input type="submit" value="注册" id="register"/>
+        </p>
+    </fieldset>
+</form>
+</body>
+</html>

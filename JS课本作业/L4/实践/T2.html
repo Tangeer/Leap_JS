@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册美淘网</title>
+    <script>
+        var emps = new Array();
+        emps['北京'] = ['海定','门头','房山','大兴','顺义'];
+        emps['湖北'] = ['武汉','宜昌','荆州','黄冈','黄石'];
+        function initData() {
+            var proObj = document.getElementById("selProvince");
+            for (var index in emps){
+                var option = document.createElement("option");
+                option.text = index;
+                option.value = index;
+                proObj.options.add(option);
+            }
+        }
+        function fillCity() {
+            var cityObj = document.getElementById("selCity");
+            cityObj.options.length = 0;
+            var currentPro = document.getElementById("selProvince").value;
+            for (var index in emps[currentPro]){
+                var option = document.createElement("option");
+                option.text = emps[currentPro][index];
+                option.value = emps[currentPro][index];
+                cityObj. options.add(option);//追加
+            }
+        }
+
+    </script>
+</head>
+<body onload="initData(),fillCity()">
+所在城市：<select id="selProvince" onchange="fillCity()"></select>
+&nbsp;<select id="selCity"></select>
+
+</body>
+</html>

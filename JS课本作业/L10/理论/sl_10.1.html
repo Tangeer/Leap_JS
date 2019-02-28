@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<p>
+    <img src="images/two.jpg" id="pic" style="display: none"/>
+</p>
+<input type="button" value="显示" id="btn">
+<script>
+    $(function () {
+        $("#btn").click(function () {
+            if ($(this).val() == "显示"){
+                $("#pic").show("slow",function () {
+                    $(this).css({
+                        "border" : "1px solid #ccc",
+                        "padding" : "5px"
+                    });
+                })
+                $(this).val("隐藏")
+            } else{
+                $("#pic").hide("slow");
+                $(this).val("显示")
+            }
+        })
+    })
+</script>
+
+</body>
+</html>

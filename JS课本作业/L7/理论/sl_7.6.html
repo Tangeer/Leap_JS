@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery的应用</title>
+    <style>
+        img{
+            display: none;
+        }
+        .current{
+            border: 1px solid #666666;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#btnShow").click(function () {
+                $(".pic:hidden").show().addClass("current");
+            });
+            $("#btnHidden").click(function () {
+                $(".pic:visible").hide();
+            })
+        });
+    </script>
+</head>
+<body>
+<img src="images/car.jpg" class="pic"/>
+<p>
+    <input type="button" value="显示" id="btnShow"/>
+    <input type="button" value="隐藏" id="btnHidden"/>
+</p>
+</body>
+</html>

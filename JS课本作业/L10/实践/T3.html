@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            font-size: 12px;
+        }
+        ul{
+            list-style: none;
+        }
+        ul li{
+            height: 25px;
+            line-height: 25px;
+        }
+        h3{
+            width: 162px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color:#c33;
+
+        }
+        #book{
+            overflow: hidden;
+            height: 75px;
+            padding: 5px;
+            border: 1px solid red;
+            width: 150px;
+        }
+    </style>
+    <script>
+        $(function () {
+            moveBook();
+        })
+        function moveBook() {
+            var stopScroll = false;
+            var marginTop = 0;
+            setInterval(function () {//自动向上循环
+                if (stopScroll) return;
+                $(".express").children("li").first().animate({"margin-top":marginTop--},0,function () {
+                    var $first = $(this);
+                    if (!$first.is(":animated")) {//判断是否在动画状态
+                        if((-marginTop)>$first.height()){//减小的值到达第一个列表项
+                            $first.css({"margin-top":0}).appendTo($(".express"));
+                            marginTop = 0;
+                        }
+
+                    }
+                })
+            },50);
+            //手动
+            $(".express").mouseover(function () {
+                stopScroll = true;
+            }).mouseout(function () {
+                stopScroll = false;
+            })
+        }
+    </script>
+</head>
+<body>
+<h3>近7日畅销榜</h3>
+<div id="book">
+    <ul class="express">
+        <li>傲慢与偏见</li>
+        <li>玻璃鞋全集</li>
+        <li>澳大利亚：假日之旅</li>
+        <li>浪漫地中海：假日之旅</li>
+        <li>欧陆风情：假日之旅</li>
+        <li>社交疯狂项语</li>
+    </ul>
+</div>
+</body>
+</html>

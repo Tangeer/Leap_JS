@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Adapttext.js-jQuery响应式文本插件|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+	<style type="text/css">
+		html, body {
+	        width: 100%;
+	        height: 100%;
+	        margin: 0;
+	      }
+	      body {
+	        background-image: url(img/Stranger-Things-Bicycle-Lights-Children-Night.jpg);
+	        background-size: cover;
+	        background-position: 50% 0%;
+	      }
+	      #my-container {
+	        color: white;
+	        width: 500px;
+	        height: 200px;
+	        position: absolute;
+	        left: 3%;
+	        bottom: 8%;
+	        width: 57%;
+	        height: 21%;
+	      }
+	</style>
+	<!--[if IE]>
+		<script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="htmleaf-container">
+		<header class="htmleaf-header">
+			<h1>Adapttext.js-jQuery响应式文本插件 <span>simple javascript solution capable to fit your text inside the parent element</span></h1>
+			<div class="htmleaf-links">
+				<a class="htmleaf-icon icon-htmleaf-home-outline" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a>
+				<a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="http://www.htmleaf.com/jQuery/Text-Link-Effects/201609294053.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a>
+			</div>
+		</header>
+		<div id="my-container">
+		      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="src/adapttext.js"></script>
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function() {
+	        new AdaptText(document.getElementById('my-container'), {
+	          callback: function(newFontSize) {
+	            console.log('new font-size is ', newFontSize);
+	          }
+	        });
+	      });
+	</script>
+</body>
+</html>

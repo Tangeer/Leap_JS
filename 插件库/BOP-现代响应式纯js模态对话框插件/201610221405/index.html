@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>BOP-现代响应式纯js模态对话框插件|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Noto+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.3/foundation.min.css">
+</head>
+<body>
+	<div class="htmleaf-container">
+		<header class="htmleaf-header">
+			<h1>BOP-现代响应式纯js模态对话框插件 <span>Modern Responsive Popup Library</span></h1>
+			<div class="htmleaf-links">
+				<a class="htmleaf-icon icon-htmleaf-home-outline" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a>
+				<a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="http://www.htmleaf.com/jQuery/Lightbox-Dialog/201610224132.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a>
+			</div>
+		</header>
+		
+	</div>
+	<div class="wrap">
+      <div class="content">
+
+        <div class="buttons">
+          <div class="full">
+            <h2>Material Design</h2>
+            <div class="button" id="material-light-button" onclick="materialLight()">
+              Material Light
+            </div>
+            <div class="button" id="material-dark-button" onclick="materialDark()">
+              Material Dark
+            </div>
+            <div class="button" id="material-light-anime-button" onclick="materialLightAnime()">
+              Material Light Animated
+            </div>
+            <div class="button" id="material-dark-anime-button" onclick="materialDarkAnime()">
+              Material Dark Animated
+            </div>
+          </div>
+        </div>
+        <div class="buttons">
+          <div class="full">
+            <h2 style="background: #FF80AB;">iOS</h2>
+            <div class="button" id="ios-light-button" onclick="iosLight()">
+              iOS Light
+            </div>
+            <div class="button" id="ios-dark-button" onclick="iosDark()">
+              iOS Dark
+            </div>
+
+            <div style="opacity:0.5;" class="button" id="material-light-anime-button">
+              Coming Soon
+            </div>
+            <div style="opacity:0.5;" class="button" id="material-dark-anime-button">
+              Coming Soon
+            </div>
+
+          </div>
+        </div>
+        <div class="buttons">
+          <div class="full">
+            <h2 style="background: #80D8FF;">Modern</h2>
+            <div class="button" id="material-light-button" onclick="modernLight()">
+              Moden Light
+            </div>
+            <div class="button" id="material-dark-button" onclick="modernDark()">
+              Modern Dark
+            </div>
+            <div class="button" id="material-light-anime-button" onclick="modernLightAnime()">
+              Modern Light Animated
+            </div>
+            <div class="button" id="material-dark-anime-button" onclick="modernDarkAnime()">
+              Modern Dark Animated
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="shade" id="shade">
+      </div>
+      <div class="shade-light" id="shade-light">
+
+      </div>
+
+
+      <!-- the windows -->
+        <div id="material-light">
+        <h1>Want to use this?</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <br>
+        <div class="exit" onclick="Exit()">EXIT</div>
+        </div>
+
+        <div id="material-dark">
+        <h1>Want to use this?</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <br>
+        <div class="exit" onclick="exitDark()">EXIT</div>
+        </div>
+        <div id="material-light-anime">
+        <h1 id="head-anime">Want to use this?</h1>
+        <p id="text-anime">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <br>
+        <div class="exit" onclick="exitLightAnime()">EXIT</div>
+        </div>
+        <div id="material-dark-anime">
+        <h1 id="head-anime-dark">Want to use this?</h1>
+        <p id="text-anime-dark">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <br>
+        <div class="exit" onclick="exitDarkAnime()">EXIT</div>
+        </div>
+
+        <!-- ios -->
+        <div id="ios-light">
+        <center><h1>Want to use this?</h1>
+        <p>
+          Lorem ipsum dolor sit amet
+        </p>
+        <br>
+        <div class="exit" onclick="iosLightExit()">OK</div>
+      </center>
+        </div>
+        <div id="ios-dark">
+        <center><h1>Want to use this?</h1>
+        <p>
+          Lorem ipsum dolor sit amet
+        </p>
+        <br>
+        <div class="exit" onclick="iosDarkExit()">OK</div>
+      </center>
+        </div>
+        <div id="modern-light">
+        <h1>Want to use this?</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <br>
+        <div class="exit" onclick="modernExit()">EXIT</div>
+        </div>
+        <div id="modern-dark">
+        <h1>Want to use this?</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <br>
+        <div class="exit" onclick="modernDarkExit()">EXIT</div>
+        </div>
+        <div id="modern-light-anime">
+        <h1 id="modernlight-head">Want to use this?</h1>
+        <p id="modernlight-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <br>
+        <div class="exit" onclick="modernlightanimatedExit()">EXIT</div>
+        </div>
+        <div id="modern-dark-anime">
+        <h1 id="moderndark-head">Want to use this?</h1>
+        <p id="moderndark-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <br>
+        <div class="exit" onclick="moderndarkanimatedExit()">EXIT</div>
+        </div>
+      <!-- windows end here -->
+<!-- document ends here -->
+    </div>
+	
+	<script type="text/javascript" src="js/bop-js.js"></script>
+</body>
+</html>

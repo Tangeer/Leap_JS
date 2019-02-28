@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第五题</title>
+    <style>
+        ul,li{
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+        }
+        li{
+            margin-left: 10px;
+            padding: 5px;
+            float: left;
+            width: 150px;
+            height: 25px;
+            font: 15px 黑体;
+            text-align: center;
+        }
+        .current{
+            background-color: #f8ae00;
+        }
+        .box{
+            border: 1px solid blueviolet;
+
+            width: 500px;
+            height: 350px;
+        }
+    </style>
+    <script>
+        function setTab(id) {
+            if (id==1){
+                document.getElementById("content1").style.display="block";
+                document.getElementById("content2").style.display="none";
+                document.getElementById("content3").style.display="none";
+                document.getElementById("one1").className="current";
+                document.getElementById("one2").className="";
+                document.getElementById("one3").className="";
+
+            }
+            if (id==2){
+                document.getElementById("content2").style.display="block";
+                document.getElementById("content1").style.display="none";
+                document.getElementById("content3").style.display="none";
+                document.getElementById("one2").className="current";
+                document.getElementById("one1").className="";
+                document.getElementById("one3").className="";
+            }
+            if(id==3){
+                document.getElementById("content3").style.display="block";
+                document.getElementById("content1").style.display="none";
+                document.getElementById("content2").style.display="none";
+                document.getElementById("one3").className="current";
+                document.getElementById("one1").className="";
+                document.getElementById("one2").className="";
+
+            }
+        }
+
+    </script>
+</head>
+<body>
+<div id="mian">
+    <ul>
+        <li class="current" id="one1" onclick="setTab(1)">标签一</li>
+        <li id="one2" onclick="setTab(2)">标签二</li>
+        <li id="one3" onclick="setTab(3)">自适应宽度的标签</li>
+        <div style="clear: both"></div>
+    </ul>
+    <div class="box">
+        <div id="content1">第一个标签的内容</div>
+        <div id="content2" style="display: none">第二标签的内容</div>
+        <div id="content3" style="display: none">自适应宽度的标签的内容</div>
+    </div>
+</div>
+</body>
+</html>

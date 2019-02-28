@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script>
+
+        $(function () {
+
+            $(".btnAdd").click(function () {
+               var $BtnObj = $(this);
+               var number = parseInt($(this).prev().val())+1;
+                $(this).prev().val(number);
+                calPrice($BtnObj,number);
+                calTotalPrice();
+            });
+            $(".btnMinus").click(function () {
+                var i = parseInt($(this).next().val());
+                if(i!= 0){
+                    var $BtnObj = $(this);
+                    var number = parseInt($(this).next().val())-1;
+                    $(this).next().val(number);
+                    calPrice($BtnObj,number);
+                    calTotalPrice();
+                }else{
+                    $(this).next().val(0);
+                }
+            });
+
+            function calPrice($BtnObj,number) {
+                var $tdObj = $BtnObj.parent().next();
+                var price = parseFloat($tdObj.text().substr(1));
+                var $tdObjTotal = $tdObj.next();
+                var total = price*number;
+                $tdObjTotal.html("&yen;"+total.toFixed(2));//商品小计小数点保留二位后显示
+            }
+            function calTotalPrice() {
+                var sum = 0;
+                $("#tabOrder td[title='price']").each(function () {
+                    sum = sum+parseFloat($(this).text().substr(1));
+                })
+                $("#spanTotal").html("&yen;"+sum);
+            }
+
+
+        })
+
+    </script>
+</head>
+<body>
+<table id="tabOrder" border="1px solid black">
+    <tr>
+        <th><input type="checkbox" id="allCb" onclick="check()"/>全选</th>
+        <th>项目</th>
+        <th>状态</th>
+        <th>类型/数量</th>
+        <th>单价</th>
+        <th>小计</th>
+        <th></th>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="item"/></td>
+        <td class="item" width="350px"><a href="detail.html"><img src="images/item1.jpg" align="left"/>欢乐空间量贩式KTV：欢唱套餐2选1，国家法定假日需到店另付20元，可升级</a></td>
+        <td>可购买</td>
+        <td><input type="button" value="-" class="btnMinus" />
+            <input class="txt" type="text" value="1" disabled="disabled"/>
+            <input type="button" value="+" class="btnAdd"/>
+        </td>
+        <td>&yen;39.9</td>
+        <td title="price">&yen;39.9</td>
+        <td><a href="#">删除</a> </td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="item"/></td>
+        <td class="item"><a href="detail.html"><img src="images/item2.jpg" align="left"/>途乐时尚主题量贩式KTV：任选一小时欢唱，可升级，提供免费WiFi</a></td>
+
+        <td>可购买</td>
+        <td><input type="button" value="-" class="btnMinus"/>
+            <input class="txt" type="text" value="1" disabled="disabled"/>
+            <input type="button" value="+" class="btnAdd"/>
+        </td>
+        <td>&yen;3</td>
+        <td title="price">&yen;3</td>
+        <td><a href="#">删除</a> </td>
+    </tr>
+    <tr>
+        <td colspan="7" class="cal">已选<span>2</span>件商品 应付总额：<span id="spanTotal">&yen;42.9</span></td>
+        <td></td>
+    </tr>
+</table>
+</body>
+</html>

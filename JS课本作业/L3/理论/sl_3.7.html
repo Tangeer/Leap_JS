@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p style="text-align: center"><img id="pic" src="images/girl_1.gif"/>
+</p>
+<p style="text-align: center"><input type="button" value="开始" onclick="play()"/>
+    <input type="button" value="停止" onclick="stop()"/>
+</p>
+
+<script>
+    var i = 1;
+    function change() {
+        if (i < 4){
+            i++;
+        } else{
+            i=1;
+        }
+        document.getElementById("pic").src="images/girl_"+i+".gif";
+    }
+    var dh;
+    function play() {
+        dh=setInterval("change()",100);
+    }
+    function stop() {
+        clearInterval(dh);
+    }
+</script>
+</body>
+</html>

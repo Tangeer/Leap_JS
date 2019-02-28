@@ -1,0 +1,86 @@
+.clear{
+    clear: both;
+}
+
+body{
+    font-size: 12px;
+}
+#wrapper,#top,#footer{
+    width: 900px;
+}
+#wrapper{
+    margin-top: 20px;
+    margin-left: 200px;
+    border: 1px solid black;
+}
+#top,#footer{
+    margin: 0px;
+    padding: 0px;
+    margin-top: 20px;
+
+    border: none;
+    border-top: 1px solid #cccccc;
+
+}
+#top legend,#footer legend{
+    margin-left: 20px;
+    color: blueviolet;
+    font: bold 15px 黑体;
+}
+#footer legend a{
+    font: 15px 宋体;
+    color: black;
+}
+#topLeft{
+    margin-left: 100px;
+    margin-top: 36px;
+    margin-bottom: 20px;
+    margin-right: 40px;
+    float: left;
+}
+#top span{
+    margin-top: 35px;
+    color: red;
+    display: block;
+    float: left;
+}
+#top ul{
+    margin: 0px;
+    padding-left: 25px;
+
+}
+p{
+    margin-left:50px;
+    margin-top: 15px;
+}
+
+#footer label {
+    width: 150px;
+    display: block;
+    float: left;
+    text-align: right;
+    font:bold 15px 宋体;
+    color: gray;
+
+}
+#footer .txt{
+    border: 1px solid #ccc;
+    width: 170px;
+}
+#txtYear{
+    width: 40px;
+    border: 1px solid #ccc;
+}
+#footer span {
+    margin-left: 20px;
+    color: red;
+}
+#bot{
+    width: 220px;
+    height: 30px;
+    text-align: center;
+    margin-left: 150px;
+    margin-top: 20px;
+    background-color: #a5afc3;
+
+}

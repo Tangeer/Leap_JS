@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var i=1,sum=0;
+    while(i<=20){
+        if(i%2!=0){
+            i++;
+            continue;
+        }
+        sum=sum+i;
+        if(sum>30){
+            document.write("当加到："+i+"时，累加和已经超过30");
+            break;
+        }
+           i++;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录按钮</title>
+</head>
+<body>
+<input type="image" src="images/login.jpg" class="btn" name="btnLogin"/>
+<script>
+        var btns = document.getElementsByName("btnLogin");
+        for(var i = 0;i <btns.length;i++){
+            btns[i].onmouseover = function () {
+                this.src="images/login_over.jpg";
+            }
+            btns[i].onmouseout = function () {
+                this.src="images/login.jpg";
+            }
+        }
+</script>
+</body>
+</html>

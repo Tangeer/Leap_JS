@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            font-size: 12px;
+        }
+        #register .txt{
+
+        }
+    </style>
+
+    <script>
+        function getId(id) {
+            return document.getElementById(id);
+        }
+        function checkEmail() {
+            var email = getId("txtEmail").value;
+            var obj = getId("span_email");
+            obj.innerHTML = "";
+            if(email==""){
+                obj.innerHTML = "Email不能为空";
+                return false;
+            }
+            if (email.indexOf("@")==-1 || email.indexOf(".")==-1){
+                obj.innerHTML = "Email格式不正确，必须包含@和.";
+                return false;
+            }
+            return true;
+        }
+        function checkPwd() {
+            var pwd = getId("txtPwd").value;
+            var objSpan=getId("span_pwd");
+            objSpan.innerHTML="";
+            if(pwd==""){
+                objSpan.innerHTML="密码不能为空";
+                return false;
+            }
+            if (pwd.length<6){
+                objSpan.innerHTML="密码必须等于或大于6个字符";
+                return false;
+            }
+            return true;
+        }
+        function check() {
+            if (checkEmail() && checkPwd()){
+                return true;
+            }
+            return false;
+        }
+
+    </script>
+</head>
+
+
+
+
+
+<body>
+<div id="register">
+<form onsubmit="return check()" action="register_success.html">
+    <p>
+        <label>邮箱：</label>
+        <input name="" type="text" id="txtEmail" class="txt" onblur = "checkEmail()"/>
+        <span id="span_email"></span>
+    </p>
+    <p>
+        <label>密码：</label>
+        <input name="" type="password" id="txtPwd" class="txt" onblur = "checkPwd()"/>
+        <span id="span_pwd"></span>
+    </p>
+    <input type="submit" value="提交"/>
+
+</form>
+</div>
+
+
+</body>
+</html>

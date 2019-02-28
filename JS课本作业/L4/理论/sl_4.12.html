@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>with语句的使用</title>
+</head>
+<body>
+<span id="myclock"></span>
+<script>
+    function showTime() {
+        var today = new Date();
+        with (today) {
+            var year = getFullYear();
+            var month = getMonth() + 1;
+            var day = getDate();
+            var hh = getHours();
+            var mm = getMinutes();
+            var ss = getSeconds();
+        }
+        document.getElementById("myclock").innerHTML = year + "年" + month + "月" + day + "日" + hh + ":" + mm + ":" + ss;
+    }
+    window.onload = showTime();
+    window.setInterval("showTime()",1000);
+
+
+</script>
+
+</body>
+</html>

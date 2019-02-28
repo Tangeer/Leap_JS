@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #register ul li{
+            display: block;
+            width: 75px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            margin-right: 5px;
+            background-image: url("images/gray.gif");
+            cursor:hand;
+            float: left;
+          }
+        #register ul li.current{
+           background-image: url("images/current.gif");
+         }
+        .box{
+            width: 200px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        function setTab(id) {
+            if (id==1){//如果单击的菜单是邮箱注册
+                document.getElementById("emailreg").style.display="block";
+                document.getElementById("phonereg").style.display="none";
+                document.getElementById("one1").className="current";
+                document.getElementById("one2").className="";
+            }
+            if (id==2){//如果单击的菜单是手机注册
+                document.getElementById("phonereg").style.display="block";
+                document.getElementById("emailreg").style.display="none";
+                document.getElementById("one2").className="current";
+                document.getElementById("one1").className="";
+            }
+        }
+    </script>
+
+</head>
+<body>
+<div id="register">
+    <form>
+        <fieldset>
+            <legend>注册新用户</legend>
+            <ul>
+                <li class="current" id="one1" onclick="setTab(1)">邮箱注册</li>
+                <li id="one2" onclick="setTab(2)">手机注册</li>
+                <div style="clear: both"></div>
+            </ul>
+            <div class="box">
+                <div id="emailreg">通过email注册</div>
+                <div id="phonereg" style="display: none">通过电话注册</div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

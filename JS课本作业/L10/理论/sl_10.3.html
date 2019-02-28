@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <style>
+        img{
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+<p>
+    <img src="images/two.jpg" id="pic"/>
+</p>
+<input type="button" value="淡入" id="btn"/>
+<script>
+    $(function () {
+        $("#btn").click(function () {
+            if ($(this).val() == "淡入") {
+                $("#pic").fadeIn("slow", function () {   //fadeIn
+                    $(this).css({
+                        "border": "1px solid #ccc",
+                        "padding": "5px"
+                    });
+                })
+                $(this).val("淡出")
+            } else {
+                $("#pic").fadeOut("slow");         //fadeOut
+                $(this).val("淡入")
+            }
+        })
+    })
+</script>
+
+</body>
+</html>

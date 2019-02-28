@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复制节点</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+            $("img").click(function () {
+                $(this).clone().appendTo("#p1");
+            });
+        })
+    </script>
+</head>
+<body>
+<p id="p1">
+    <img src="images/scenes.jpg" width="150"/>
+</p>
+</body>
+</html>

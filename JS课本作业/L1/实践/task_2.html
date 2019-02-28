@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var price=3200;
+    month=5;
+    position="头等舱";
+    var discount,money;
+    if(month==5||month==6||month==7||month==8||month==9||month==10){
+        if(position=="头等舱"){
+            discount=9;
+            money=price*0.9;
+        }else if(position=="经济舱"){
+            discount=7.5;
+            money=price*0.75;
+        }
+    }else{
+        if(position=="头等舱"){
+            discount=6;
+            money=price*0.6;
+        }else if(position=="经济舱"){
+            discount=3;
+            money=price*0.3;
+        }
+    }
+    document.write("您的机票原价是："+price);
+    document.write("<br/>")
+    document.write("出行的月份是："+month);
+    document.write("<br/>")
+    document.write("仓位是："+position);
+    document.write("<br/>")
+    document.write("折扣是："+discount);
+    document.write("<br/>")
+    document.write("最终的价格是："+money);
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建sortByPrice()</title>
+</head>
+<body>
+<script>
+    //按价格排序
+    function sortByPrice() {
+        for (var i = 0; i < foods.length;i++){
+            for (var j = 0; j < foods.leng - 1 -i; j++){
+                if (foods[j]["price"] > foods[j+1]["price"]){
+                    var temp = foods[j];
+                    foods[j] = foods[j+1];
+                    foods[j+1] = temp;
+                }
+            }
+        }
+    }
+    //按销量排序
+    function sortBySale() {
+        for (var i =0; i<foods.length; i++){
+            for (var j = 0;j < foods.length - 1-i;j++){
+                if (foods[j]["sale"] > foods[j+1]["sale"]){
+                    var temp = foods[j];
+                    foods[j] = foods[j+1];
+                    foods[j+1] = temp;
+                }
+            }
+        }
+    }
+    //显示主食
+    function sortPro() {
+        var selValue = document.getElementById("sort").value;
+        if (selValue ==1){
+            //按照价格排序数组
+        } else if (selValue ==2){
+            //按照销量排序数组
+        }
+        //显示数组中保存的食品对象
+    }
+</script>
+</body>
+</html>

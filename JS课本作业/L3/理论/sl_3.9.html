@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function changeURL() {
+            var url=document.getElementById("sel").value;
+            window.location.href=url;
+        }
+    </script>
+</head>
+<body>
+<a href="javascript:window.history.back()">后退</a>
+<a href="javascript:window.history.forward()">前进</a>
+<h3>
+    友情提示：
+</h3>
+<select id="sel" onchange="changeURL()">
+    <option value="http://www.baidu.com">百度</option>
+    <option value="http://www.163.com">网易</option>
+    <option value="http://www.taobao.com">淘宝</option>
+    <option value="http://www.sina.com">新浪</option>
+</select>
+</body>
+</html>

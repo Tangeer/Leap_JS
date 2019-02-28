@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var picObj = new Image();
+        picObj.src = "images/2.jpg";
+        function changePic() {
+            document.getElementById("pic").src = picObj.src;
+        }
+    </script>
+</head>
+<body>
+<p>
+    <img src="images/3.jpg" id="pic" width="200"/>
+
+</p>
+<input type="button" value="切换" onclick="changePic()"/>
+</body>
+</html>

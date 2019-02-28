@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义动画</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <style>
+        img{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+</head>
+<body>
+<img src="images/tmac.jpg"/>
+<script>
+    $(function () {
+        $("img").click(function () {
+            $(this).animate({
+               "left":"+=100px",
+                "top":"+=100px",
+                "opacity":"0.5"
+            },"slow");
+        })
+    })
+</script>
+</body>
+</html>

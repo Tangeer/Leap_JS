@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1px" align="center">
+    <tr>
+        <td>摄氏温度</td>
+        <td>华氏温度</td>
+    </tr>
+    <script>
+        var f;
+        var c = 0;
+        var count = 1;
+        while (count <= 10 && c <= 250) {
+            f = c * 9 / 5 + 32;
+            document.write("<tr><td>" + c + "</td><td>" + f + "</td></tr>")
+            c = c + 20;
+            count++;
+        }
+    </script>
+</table>
+
+</body>
+</html>

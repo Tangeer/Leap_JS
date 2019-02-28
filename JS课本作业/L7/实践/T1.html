@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指导1</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+            $(":header").css("color","red");
+            $(":header+ul").css("list-style","url(images/list.gif)");
+            $(":header+ul>li>ul").css("list-style","url(images/list_icon.gif)");
+        });
+    </script>
+</head>
+<body>
+<h5>Wed前端技术</h5>
+<ul>
+    <li>使用DIV+CSS设计前端页面
+        <ul>
+            <li>页面布局</li>
+            <li>美化特效</li>
+            <li>页面特效</li>
+        </ul>
+    </li>
+    <li>使用Javascript+jQuery制作页面特效
+        <ul>
+            <li>JavaScript基础</li>
+            <li>jQuery选择器</li>
+            <li>jQuery操作DOM</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

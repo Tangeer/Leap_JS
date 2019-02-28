@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>val()的使用</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+           $("#userEmail").focus(function () {
+               var txt_value = $(this).val();
+               if (txt_value =="tinzel@sina.com"){
+                   $(this).val("");
+               }
+           });
+           $("#userEmail").blur(function () {
+               var txt_value = $(this).val();
+               if(txt_value == ""){
+                   $(this).val("tinzel@sina.com");
+               }
+           });
+        });
+
+
+    </script>
+</head>
+<body>
+<div id="email">
+    <p>
+        <label>邮箱：</label>
+        <input name="" type="text" class="txt" value="tinzel@sina.com" id="userEmail"/>
+    </p>
+    <p>
+        <label>密码：</label>
+        <input name="" type="text" class="txt"/>
+    </p>
+    <p>
+
+        <input type="button" value="登录" class="btn" name="btnLogin"/>
+        <a href="#">忘记密码了？</a>
+    </p>
+</div>
+</body>
+</html>

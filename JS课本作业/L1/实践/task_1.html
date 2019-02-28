@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var identity = true;
+    var money = 340;
+    if(identity){
+        if(money>200){
+            money = money*0.75;
+        }else{
+            money = money*0.8;
+        }
+        document.write("会员消费340，实际支付："+money);
+    }else{
+        if(money>100){
+            money = money*0.9;
+        }
+        document.write("非会员消费340，实际支付："+money);
+    }
+</script>
+</body>
+</html>

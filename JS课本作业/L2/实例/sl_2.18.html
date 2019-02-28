@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+友情链接：<select onchange="changeLink(this)">
+            <option value="请选择">请选择</option>
+            <option value="http://www.letv.com/">乐视网高清</option>
+            <option value="http://sports.sina.com.cn/">新浪体育</option>
+            <option value="http://www.taobao.com/">淘宝</option>
+</select>
+<script>
+    function changeLink(obj) {
+        var site=obj.value;
+        if(site !="请选择"){
+            window.open(site);
+        }
+    }
+</script>
+</body>
+</html>

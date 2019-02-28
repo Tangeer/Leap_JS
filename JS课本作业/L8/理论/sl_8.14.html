@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+            $("input[type='button']").click(function () {
+                $("ul li").remove("ul li:last");
+            })
+        })
+    </script>
+</head>
+<body>
+流行歌曲：
+<ul>
+    <li>一个像夏天一个像秋天——范玮琪</li>
+    <li>想起——韩雪</li>
+    <li>没那么简单——黄小琥</li>
+    <li>指望——郁可唯</li>
+</ul>
+<input type="button" value="删除"/>
+</body>
+</html>

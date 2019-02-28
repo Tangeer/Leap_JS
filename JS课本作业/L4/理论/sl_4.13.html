@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for...in的用法</title>
+</head>
+<body>
+<script>
+    function Person() {
+        this.name = "韦萍";
+        this.age = 21;
+        this.gender = "女";
+    }
+    var person = new Person();
+    var info = "";
+    for (var prop in person){
+        info=info+person[prop]+" ";
+    }
+    document.write(info);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <style>
+        .space{
+            position: relative;
+            cursor: hand;
+            list-style: none;
+
+        }
+        .space ul{
+            width: 80px;
+            position: absolute;
+            background-color: #fbfbfb;
+            z-index: 100;
+            list-style: none;
+            display: none;
+        }
+        .space ul li{
+            float: none;
+            line-height: 21px;
+            height: 21px;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("li.space:eq(0)").hover(function () {
+                $("li.space:eq(0) ul").stop().slideDown(500);
+            },function () {
+                $("li.space:eq(0) ul").stop().slideUp(500);
+            })
+        })
+    </script>
+</head>
+<body>
+<li class="space"><a href="#">我的美淘</a>
+    <ul>
+        <li><a href="#">我的订单</a></li>
+        <li><a href="#">我的收藏</a></li>
+        <li><a href="#">我的余额</a></li>
+        <li><a href="#">我的订单</a></li>
+
+    </ul>
+</li>
+</body>
+</html>

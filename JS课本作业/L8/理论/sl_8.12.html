@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>替换节点</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+            $("input[type='button']").click(function () {
+                var $li = $("<li>勿忘心安——张杰</li>");
+                $("ul li:last").replaceWith($li);
+            })
+        })
+    </script>
+</head>
+<body>
+流行歌曲：
+<ul>
+    <li>想起——韩雪</li>
+    <li>没那么简单——黄小琥</li>
+    <li>指望——郁可唯</li>
+</ul>
+<input type="button" value="替换"/>
+</body>
+</html>

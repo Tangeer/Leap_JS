@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一题</title>
+</head>
+<body>
+<script>
+var txt="abaasdffggghhjjkkgfddsssss3444343";
+
+//第一问
+document.write(txt.length+"<br/>");
+document.write("<br/>");
+
+//第二问
+for (var i=0;i<txt.length;i++){
+    if(i==0 || i==3 || i==5 || i==9){
+        document.write("位置为"+i+"字符是："+txt.substr(i,1)+"<br/>");
+    }
+}
+document.write("<br/>");
+
+//第三问
+if(txt.indexOf("i") !=-1){
+    document.write("i在字符串中存在<br/>");
+}else{
+    document.write("i在字符串中不存在<br/>");
+}
+if(txt.indexOf("c") !=-1){
+    document.write("c在字符串中存在<br/>");
+}else{
+    document.write("c在字符串中不存在<br/>");
+}
+if(txt.indexOf("b") !=-1){
+    document.write("b在字符串中存在<br/>");
+}else{
+    document.write("b在字符串中不存在<br/>");
+}
+document.write("<br/>");
+
+//第四问
+document.write(txt);
+var txtReg=/[g]/g;
+var txtValue=txt.replace(txtReg,"22");
+document.write("<br/>");
+document.write(txtValue);
+document.write("<br/>");
+document.write("<br/>");
+document.write(txt);
+var txtReg=/[s]{2}/g;
+var txtValue=txt.replace(txtReg,"b");
+document.write("<br/>");
+document.write(txtValue);
+document.write("<br/>");
+document.write("<br/>");
+
+//第五问
+
+var subtxt=txt.substring (1,6);
+document.write("<br/>");
+document.write(subtxt);
+document.write("<br/>");
+document.write("<br/>");
+//第六问
+var json = {};
+for (var i=0;i<txt.length;i++){
+    if (!json[txt.charAt(i)]){
+        json[txt.charAt(i)] = 1;
+    } else{
+        json[txt.charAt(i)]++;
+    }
+}
+var char='';
+var num=0;
+for (var key in json){
+    if(json[key]>num){
+        char = key;
+        num = json[key];
+    }
+}
+document.write(txt+"出现次数最多的字符为"+char+"且次数为："+num);
+document.write("<br/>");
+document.write("<br/>");
+//第七问
+    for (var i =0;i<txt.length;i++){
+        document.write("@"+txt[1]+"@");
+    }
+</script>
+</body>
+</html>

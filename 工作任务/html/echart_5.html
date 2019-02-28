@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Echart_1</title>
+    <!--引入Echartwen文件-->
+    <script src="../js/echarts.js"></script>
+</head>
+<body>
+<!--第二步：指定一个容器用来存放echarts，也就是一个设置宽高属性的 DOM节点 -->
+<div id="box" style="width: 600px;height:400px;"></div>
+</body>
+<script>
+    var oMyChart = echarts.init(document.getElementById("box"));
+    var option = {
+        backgroundColor: '#FBFBFB',
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['充值','消费']
+        },
+
+        calculable : true,
+
+
+        xAxis : [
+            {
+                axisLabel:{
+                    rotate: 30,
+                    interval:0
+                },
+                axisLine:{
+                    lineStyle :{
+                        color: '#CECECE'
+                    }
+                },
+                type : 'category',
+                boundaryGap : false,
+                data : function (){
+                    var list = [];
+                    for (var i = 10; i <= 18; i++) {
+                        if(i<= 12){
+                            list.push('2016-'+i + '-01');
+                        }else{
+                            list.push('2017-'+(i-12) + '-01');
+                        }
+                    }
+                    return list;
+                }()
+            }
+        ],
+        yAxis : [
+            {
+
+                type : 'value',
+                axisLine:{
+                    lineStyle :{
+                        color: '#CECECE'
+                    }
+                }
+            }
+        ],
+        series : [
+            {
+                name:'充值',
+                type:'line',
+                symbol:'none',
+                smooth: 0.2,
+                color:['#66AEDE'],
+                data:[800, 300, 500, 800, 300, 600,500,600]
+            },
+            {
+                name:'消费',
+                type:'line',
+                symbol:'none',
+                smooth: 0.2,
+                color:['#90EC7D'],
+                data:[600, 300, 400, 200, 300, 300,200,400]
+            }
+        ]
+    }
+    oMyChart.setOption(option);
+
+
+
+</script>
+</html>

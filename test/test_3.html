@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function add($addBtn) {
+            var number = parseInt($addBtn.prev().val()) + 1;
+            $addBtn.prev().val(number);
+            calPrice($addBtn, number);
+            calTotal();
+        }
+
+        function minus($minusBtn) {
+            var i = parseInt($minusBtn.next().val());
+            if (i != 0) {
+                var number = parseInt($minusBtn.next().val()) - 1;
+                $minusBtn.next().val(number);
+                calPrice($minusBtn, number);
+                calTotal();
+            } else {
+                $minusBtn.next().val(0);
+            }
+        }
+
+        function choose(chooseBtn) {
+            if (chooseBtn.checked) {
+                calTotal();
+            } else {
+                calTotal();
+            }
+            var objItems = document.getElementsByName("item");
+            var objCb = document.getElementById("allCb");
+            for (var i = 0; i < objItems.length; i++) {
+                if (!objItems[i].checked) {
+                    objCb.checked = objItems[i].checked;
+                    return;
+                }
+            }
+            objCb.checked = true;
+        }
+
+        $(function () {
+            var x = 5, y = 15;//初始化提示图片位置
+            //小图片鼠标移动事件
+            $("table img").mouseover(function (e) {
+                $("#imgTip")
+                    .attr("src", this.src)//设置图片的src属性
+                    .css({"top": (e.pageY + y) + "px", "left": (e.pageX + x) + "px"})//设置提示图片的位置
+                    .show(1000);//显示图片
+            });
+            //小图片移除事件
+            $("table img").mouseout(function () {
+                $("#imgTip").hide();//隐藏图片
+            });
+        })
+        //小图片鼠标移动事件
+        $("table img").mouseover(function () {
+            enlarge(e);
+        });
+        //小图片移除事件
+        $("table img").mouseout(function () {
+            $("#imgTip").hide();//隐藏图片
+        });
+
+        function enlarge(e) {
+            var x = 5, y = 15;//初始化提示图片位置
+            $("#imgTip")
+                .attr("src", this.src)//设置图片的src属性
+                .css({"top": (e.pageY + y) + "px", "left": (e.pageX + x) + "px"})//设置提示图片的位置
+                .show(500);//显示图片
+        }
+
+
+
+
+
+
+        var x=5,y=15;//初始化提示图片位置
+        //小图片鼠标移动事件
+        $("table img").mouseover(function(e){
+            $("#imgTip")
+                .attr("src",this.src)//设置图片的src属性
+                .css({"top":(e.pageY+y)+"px","left":(e.pageX+x)+"px"})//设置提示图片的位置
+                .show(200);//显示图片
+        });
+        //小图片移除事件
+        $("table img").mouseout(function(){
+            $("#imgTip").hide();//隐藏图片
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

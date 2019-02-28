@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQyery</title>
+    <style>
+      div{
+          width: 200px;
+          height: 200px;
+          float: left;
+          margin: 20px;
+      }
+        p{
+            clear: left;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#btnContain").click(function () {
+                $("div:contains('A')").css('background-color','#F00');
+            });
+            $("#btnEmpty").click(function () {
+                $("div:empty").css('background-color','#00F');
+            })
+            $("#btnHas").click(function () {
+                $("div:has(span)").css('background-color','#00F')
+            })
+            $("#btnParent").click(function () {
+                $("div:parent").css('color','white');
+            })
+        });
+    </script>
+</head>
+<body>
+<div>ABCD</div>
+<div></div>
+<div><span>嵌套span的标签</span></div>
+<p>
+    <input type="button" value="内容包含A的元素" id="btnContain"/>
+    <input type="button" value="空元素" id="btnEmpty"/>
+    <input type="button" value="含有span的元素" id="btnHas"/>
+    <input type="button" value="非空元素" id="btnParent"/>
+</p>
+</body>
+</html>

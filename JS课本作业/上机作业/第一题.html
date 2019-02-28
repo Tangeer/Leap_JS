@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一题</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <style>
+        .clear {
+            clear: both;
+        }
+
+        body {
+            font-size: 12px;
+        }
+
+        #wrapper {
+            width: 900px;
+            height: 450px;
+            border: 1px solid black;
+        }
+
+        #head {
+            margin-top: 30px;
+            margin-left: 20px;
+            margin-right: 20px;
+            border-bottom: 1px solid #0033CC;
+        }
+
+        #head a {
+            color: blue;
+            font: 20px 宋体;
+        }
+
+        #content {
+            margin-left: 20px;
+        }
+
+        label {
+            font: 15px 新宋体;
+        }
+
+        span {
+            color: gray;
+            margin-left: 15px;
+        }
+    </style>
+    <script>
+        function getId(id) {
+            return document.getElementById(id);
+        }
+
+        function checkName() {
+            var name = getId("txtName").value;
+            var nameSpan = getId("spanName");
+            var nameReg = /^[a-zA-Z0-9][-\w]{2,16}[a-zA-Z0-9]$/;
+            if (!nameReg.test(name)) {
+                nameSpan.innerHTML = "错误，用户名由数字，字母，下划线，点，减号组成的4-18位字符，以数字，字母开头和结尾";
+                return false;
+            }
+            nameSpan.innerHTML = "格式正确";
+            return true;
+        }
+
+        function checkPwd() {
+            var pwd = getId("txtPwd").value;
+            var pwdSpan = getId("spanPwd");
+            var pwdReg = /^[a-zA-Z0-9]{4,10}$/;
+            if (!pwdReg.test(pwd)) {
+                pwdSpan.innerHTML = "错误，密码由英文字母和数字组成的4-10位字符";
+                return false;
+            }
+            pwdSpan.innerHTML = "格式正确";
+            return true;
+        }
+
+        function checkConfirmPwd() {
+            var confirmPwd = getId("txtConfirmPwd").value;
+            var pwd = getId("txtPwd").value;
+            var confirmPwdSpan = getId("spanConfirmPwd");
+            if (confirmPwd != pwd) {
+                confirmPwdSpan.innerHTML = "密码不一致";
+                return false;
+            }
+            confirmPwdSpan.innerHTML = "";
+            return true;
+        }
+
+        function checkEmail() {
+            var email = getId("txtEmail").value;
+            var emailSpan = getId("spanEmail");
+            var emailReg = /^\w+@\w+.[a-zA-Z]{2,3}$/;
+            if (email == "") {
+                emailSpan.innerHTML = "请输入邮箱";
+                return false;
+            }
+            if (!emailReg.test(email)) {
+                emailSpan.innerHTML = "错误，邮箱格式如dfsf@tom.com";
+                return false;
+            }
+            emailSpan.innerHTML = "格式正确";
+            return true;
+        }
+
+        function checkPhone() {
+            var phone = getId("txtPhone").value;
+            var phoneSpan = getId("spanPhone");
+            var phoneReg = /^(13|15|18)\d{9}$/;
+            if (phone == "") {
+                phoneSpan.innerHTML = "错误!请输入手机号";
+                return false;
+            }
+            if (!phoneReg.test(phone)) {
+                phoneSpan.innerHTML = "错误，手机号由11位数字组成，且以13,15,18开头";
+                return false;
+            }
+            phoneSpan.innerHTML = "格式正确";
+            return true;
+        }
+
+        function checkSex() {
+            var sexs = document.getElementsByName("sex");
+            var sexSpan = getId("spanSex");
+            for (var i = 0; i < sexs.length; i++) {
+                if (sexs[i].checked) {
+                    sexSpan.innerHTML = "";
+                    return true;
+                }
+            }
+            sexSpan.innerHTML = "错误!请选择性别";
+            return false;
+        }
+
+        function checkPro() {
+            var selPro = getId("choosePro");
+            var proSpan = getId("spanPro");
+            if (selPro.value != "0") {
+                proSpan.innerHTML = "";
+                return true;
+            }
+            proSpan.innerHTML = "错误!请选择省份";
+            return false;
+        }
+
+        function shopSite() {
+            $checkedBox = $("input[type='checkbox']:checked");
+            var boxSpan = getId("spanBox");
+            if ($checkedBox.length == 0) {
+                boxSpan.innerHTML = "错误!至少选一项，可多选";
+                return false;
+            }
+            boxSpan.innerHTML = "";
+            return true;
+        }
+        function checkForm() {
+            return checkName() && checkPwd() && checkConfirmPwd() && checkEmail()
+                && checkPhone() && checkSex() && checkPro() && shopSite();
+        }
+    </script>
+</head>
+<body>
+<div id="wrapper">
+    <form action="success.html" onsubmit="return checkForm()">
+        <div id="head"><a>返利网注册</a></div>
+        <div id="content">
+            <p>
+                <label>*用户名：</label>
+                <input type="text" name="" id="txtName" class="txt" onblur="checkName()"/>
+                <span id="spanName">由数字，字母，下划线，点，减号组成的4-18位字符，以数字，字母开头和结尾</span>
+            </p>
+            <p>
+                <label>*密码：</label>
+                <input type="text" name="" id="txtPwd" class="txt" onblur="checkPwd()"/>
+                <span id="spanPwd">英文字母和数字组成的4-10位字符</span>
+            </p>
+            <p>
+                <label>*确认密码：</label>
+                <input type="text" name="" id="txtConfirmPwd" class="txt" onblur="checkConfirmPwd()"/>
+                <span id="spanConfirmPwd">两次输入密码须一致</span>
+            </p>
+            <p>
+                <label>*Email：</label>
+                <input type="text" name="" id="txtEmail" class="txt" onblur="checkEmail()"/>
+                <span id="spanEmail">请输入您常用的邮箱，如dfsf@tom.com</span>
+            </p>
+            <p>
+                <label>*移动电话：</label>
+                <input type="text" name="" id="txtPhone" class="txt" onblur="checkPhone()"/>
+                <span id="spanPhone">手机号由11位数字组成，且以13,15,18开头</span>
+            </p>
+            <p>
+                <label>*性别：</label>
+                <input type="radio" name="sex" value="男">男
+                <input type="radio" name="sex" value="女">女
+                <span id="spanSex">性别必选一项</span>
+            </p>
+            <p>
+                <label>*省份：</label>
+                <select id="choosePro">
+                    <option value="0" selected="selected">--请选择省份--</option>
+                    <option value="1">湖北</option>
+                    <option value="2">湖南</option>
+                </select>
+                <span id="spanPro">省份必选一项</span>
+            </p>
+            <p>
+                <label>*购物网：</label>
+                <input type="checkbox" value="淘宝网">淘宝网
+                <input type="checkbox" value="当当网">当当网
+                <input type="checkbox" value="京东">京东
+                <input type="checkbox" value="亚马逊">亚马逊
+                <span id="spanBox">至少选一项，可多选</span>
+            </p>
+            <p>
+                <input type="submit" value="提交">&nbsp;<input type="reset" value="重置">
+            </p>
+        </div>
+    </form>
+</div>
+</body>
+</html>

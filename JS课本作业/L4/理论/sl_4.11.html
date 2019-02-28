@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Book(name,author,price) {
+        this.name=name;
+        this.author=author;
+        this.price=price;
+        this.show=function () {
+            alert("书名："+this.name+"\n作者："+this.author+"\n价格："+this.price);
+        }
+    }
+    var book=new Book(".NET平台WEB应用开发","张江","68");
+    book.show();
+    document.write(book.name);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习2</title>
+    <style>
+        body{
+            font-family: Arial, Helvetice, sans-serif;
+            font-size:12px;
+            margin: 0px;
+            height: 1200px;
+        }
+        #imgTip{
+            position: absolute;
+            border: 1px solid #ccc;
+            width: 300px;
+            height: 250px;
+            display: none;
+        }
+        #mask{
+            background-color: gray;
+            left: 0px;
+            position: absolute;
+            top: 0px;
+            z-index: 100px;
+            filter:alpha(opacity=30);
+            opacity: 0.3;
+        }
+        #dialog{
+            background-color: #fff;
+            border:5px solid orange;
+            height: 150px;
+            left: 500px;
+            padding: 1px;
+            position: fixed;
+            top: 100px;
+            width: 300px;
+            z-index: 101;
+            /*display: none;*/
+        }
+
+        #dialog p.close{
+            margin: 0px;
+            float:right;
+            width: 40px;
+            cursor: pointer;
+        }
+        #dialog div#info{
+            text-align: center;
+            height: 80px;
+            line-height: 80px;
+        }
+        #dialog div#sure{
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+        }
+        #mask{
+            position: absolute;
+            z-index: 100px;
+            top: 0px;
+            left: 0px;
+            background-color: #000;
+            filter:alpha(opacity=30);
+            opacity: 0.3;
+            /*display: none;*/
+        }
+        /*对话框*/
+        #dialog{
+            width: 250px;
+            border: 3px solid #666;
+            position: fixed;
+            z-index: 101;
+            display: none;
+            background-color: #fff;
+
+        }
+        /*删除提示对话框*/
+        #dialog div.title{
+            background-color:#F90;
+            height: 40px;
+        }
+        .title p{
+            margin: 0px;
+            color: #fff;
+            font-weight: bold;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            float: left;
+            padding-left: 10px;
+        }
+        .title img{
+            padding-top: 5px;
+        }
+        #dialog div.content{
+            padding: 5px;
+            padding-right: 0px
+            height: 50px;
+            line-height: 50px;
+        }
+        .content img{
+            vertical-align: middle;
+        }
+        #dialog div.bottom{
+            text-align: right;
+            padding: 10px 10px 0px 10px;
+            background-color: #eeeeee;
+        }
+        .btn1{
+            border: 1px solid #666;
+            width: 55px;
+            height: 25px;
+            line-height: 25px;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+            $(".btnAdd").click(function () {
+                var $BtnObj = $(this);
+                var number = parseInt($(this).prev().val())+1;
+                $(this).prev().val(number);
+                calPrice($BtnObj,number);
+                calTotalPrice();
+            });
+            $(".btnMinus").click(function () {
+                var i = parseInt($(this).next().val());
+                if(i!= 0){
+                    var $BtnObj = $(this);
+                    var number = parseInt($(this).next().val())-1;
+                    $(this).next().val(number);
+                    calPrice($BtnObj,number);
+                    calTotalPrice();
+                }else{
+                    $(this).next().val(0);
+                }
+            });
+            $(".btnDel").click(function () {
+                showMask();
+                setDialog();
+                delRowId = $(this).parents("tr").attr("id");
+            })
+            $("#closePic,#btnCancel").click(function () {//关闭
+                $("#mask,#dialog").hide();
+            });
+            $("#btnSure").click(function () {//确认删除
+                $("table tr[id='"+delRowId+"']").remove();
+                $("#mask,#dialog").hide();
+            })
+        });
+        function calPrice($BtnObj,number) {
+            var $tdObj = $BtnObj.parent().next();
+            var price = parseFloat($tdObj.text().substr(1));
+            var $tdObjTotal = $tdObj.next();
+            var total = price*number;
+            $tdObjTotal.html("&yen;"+total.toFixed(2));//商品小计小数点保留二位后显示
+        }
+        function calTotalPrice() {
+            var sum = 0;
+            $("#tabOrder td[title='price']").each(function () {
+                sum = sum+parseFloat($(this).text().substr(1));
+            });
+            $("#spanTotal").html("&yen;"+sum);
+        }
+        //计算并显示团购项目的件数
+        function calItems() {
+            var count = $("#tabOrder tr").length-2;
+            //显示团购的数量
+            $("#spanItemCount").html(count);
+        }
+
+        function setDialog() {
+            var $wObj = $(window);
+            var widW = $wObj.width();
+            var widH = $wObj.height();
+            var $dObj = $("#dialog");
+            var diaW = $dObj.width();
+            var diaH = $dObj.height();
+            var left = (widW-diaW)/2;
+            var top = (widH-diaH)/2;
+            $dObj.css({"left":left,"top":top});
+            $("#dialog").show();
+        }
+        function showMask() {
+            var bh = $("body").height();
+            var bw = $("body").width();
+            $("#mask").css({
+                height:bh + "px",
+                width: bw + "px",
+                display:"block"
+            })
+        }
+    </script>
+</head>
+<body>
+<table id="tabOrder" border="1px solid black">
+    <tr>
+        <th><input type="checkbox" id="allCb" onclick="check()"/>全选</th>
+        <th>项目</th>
+        <th>状态</th>
+        <th>类型/数量</th>
+        <th>单价</th>
+        <th>小计</th>
+        <th></th>
+    </tr>
+    <tr id="11">
+        <td><input type="checkbox" name="item"/></td>
+        <td class="item" width="350px"><a href="detail.html"><img src="images/item1.jpg" align="left"/>
+            <img id="imgTip"/>
+            欢乐空间量贩式KTV：欢唱套餐2选1，国家法定假日需到店另付20元，可升级</a></td>
+        <td>可购买</td>
+        <td><input type="button" value="-" class="btnMinus" />
+            <input class="txt" type="text" value="1" disabled="disabled"/>
+            <input type="button" value="+" class="btnAdd"/>
+        </td>
+        <td>&yen;39.9</td>
+        <td title="price">&yen;39.9</td>
+        <td><a href="#" class="btnDel">删除</a> </td>
+    </tr>
+    <tr id="22">
+        <td><input type="checkbox" name="item"/></td>
+        <td class="item"><a href="detail.html"><img src="images/item2.jpg" align="left"/>
+            <img id="imgTip"/>
+            途乐时尚主题量贩式KTV：任选一小时欢唱，可升级，提供免费WiFi</a></td>
+
+        <td>可购买</td>
+        <td><input type="button" value="-" class="btnMinus"/>
+            <input class="txt" type="text" value="1" disabled="disabled"/>
+            <input type="button" value="+" class="btnAdd"/>
+        </td>
+        <td>&yen;3</td>
+        <td title="price">&yen;3</td>
+        <td><a href="#" class="btnDel">删除</a> </td>
+    </tr>
+    <tr>
+        <td colspan="7" class="cal">已选<span id="spanItemCount">2</span>件商品 应付总额：<span id="spanTotal">&yen;42.9</span></td>
+        <td></td>
+    </tr>
+</table>
+<div id="mask"></div>
+<div id="dialog">
+    <div class="title">
+        <p>删除时提示</p>
+        <img src="images/del.png" id="closePic" title="关闭"/>
+    </div>
+    <div class="content"><img src="images/warning.jpg" width="70px"/><span>您真的要删除记录吗？</span></div>
+    <div class="bottom">
+        <input type="button" value="确定" class="btn1" id="btnSure">
+        <input type="button" value="取消" class="btn1" id="btnCancel">
+    </div>
+</div>
+</body>
+</html>

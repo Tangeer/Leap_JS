@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用添加接点的技能，显示休闲类食品</title>
+</head>
+<body>
+<script>
+    function Food(desc,price,sale,pic) {
+        this.desc = desc;
+        this.price = price;
+        this.sale = sale;
+        this.pic = pic;
+    }
+    var foods = new Array()
+    foods[0] = new Food("【百味草】 坚果零食特产干果 奶油味夏威夷果200gx3包送开果器",46.90,9257,"images/food1.jpg");
+    foods[1] = new Food("【顺丰包邮】 费列罗进口巧克力48粒零食品 妇女节礼盒生日礼物",133.00,13000,"images/food2.jpg);
+    foods[2] = new Food("卡可芙 进口料408克崔松巧克力8口味 礼盒装 零食特价包邮 ",19.9,72000,"images/food3.jpg);
+    foods[3] = new Food("零食坚果特产 二级美国山核桃碧根果长寿果特价250g装 ",7.5,220,"images/food4.jpg");
+    foods[4] = new Food("珠穆朗玛金牌肉丝饼30g 福建特产月饼 糕点皮薄 特价20个包邮",0.1,437,"images/food5.jpg")
+    foods[5] = new Food("河南特产 香辣零食 卫龙亲嘴烧 辣条 辣面筋 13g 60包包邮 批发",0.1,1083,"images/food6.jpg")
+    foods[6] = new Food("80后美食 儿时记忆 素火爆鸡筋 麻辣素食 满50包包邮全国 ",0.1,466,"images/food7.jpg")
+    foods[7] = new Food("味之源鱼排20g洞庭野生香辣烟熏鱼块 河南特产零食小吃 味之源 ",0.99,3057,"images/food8.jpg")
+    //创建函数showFood()
+    function showFoods() {
+        var divPro = document.getElementById("show");
+        divPro.innerHTML = "";
+        for (var i in foods){
+            var dlObj = document.createElement("dl");
+            var content = "<dt><img src=' "+foods[i]["pic"]+"'/></dt>";
+            content += "<dd><p>￥<span>"+foods[i]["price"]+"</span></p>销量：<span>"+foods[i]["sale"] + "</span></dd>";
+            content += "<dd>" +foods[i]["desc"] + "</dd>";
+            //alert(content);
+            dlObj.innerHTML = content;
+            dlObj.className = "eachPro";
+            divPro.appendChild(dlObj);
+        }
+
+    }
+</script>
+</body>
+</html>

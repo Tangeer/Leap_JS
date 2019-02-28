@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery</title>
+    <style>
+        body{
+            font-size: 12px;
+            text-align: center;
+        }
+        div,span{
+            display: none;
+            float: left;
+            width: 120px;
+            height: 120px;
+            border: 2px solid #ccc;
+            margin: 8px;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+            $("div,span").css("display","block");
+            $("#divOne").css("color","#ccc");
+            $("span").css("fontSize","20px");
+            $("divOne,span").css("borderStyle","dashed");
+        })
+    </script>
+</head>
+<body>
+<div id="divOne">ID</div>
+<div class="clsTwo">CLASS</div>
+<span>SPAN</span>
+
+
+</body>
+</html>

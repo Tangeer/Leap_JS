@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #main {
+            margin: 20px;
+            width: 350px;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            /*border: 1px solid black;*/
+        }
+
+        #imgArea li {
+            width: 350px;
+            height: 300px;
+        }
+
+        #imgArea img {
+            border: none;
+        }
+
+        #imgID {
+            position: absolute;
+            left: 5px;
+            bottom: 5px;
+            z-index: 100;
+        }
+
+        #imgID li {
+            float: left;
+            color: #069;
+            text-align: center;
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            font-family: Arial;
+            font-size: 12px;
+            cursor: pointer;
+            overflow: hidden;
+            margin: 3px 1px;
+            border: 1px solid #069;
+            background-color: #fff;
+
+        }
+
+        #imgID li.active {
+            color: #fff;
+            line-height: 16px;
+            width: 16px;
+            height: 16px;
+            font-size: 14px;
+            margin: 3px 1px;
+            border: 1px solid #069;
+            background-color: #069;
+            font-weight: bold;
+        }
+
+    </style>
+    <script>
+        $(function () {
+            var index = 0;
+            var stop = false;
+            var $pagesLis = $("#main").find("#imgID li");
+            $pagesLis.eq(index).addClass("active").siblings().removeClass("active");
+            mainDivh = $("#main").height();
+
+            setInterval(function () {
+                if (stop) {
+                    return;
+                }
+                index++;
+                if (index == $pagesLis.length) {
+                    index = 0;
+                }
+                $("ul#imgArea").stop(true, true).animate({"marginTop": -mainDivh * index}, 1000);//清空动画序列，立即完成动画
+                $pagesLis.eq(index).addClass("active").siblings().removeClass("active");//当前播放图片编号高亮显示
+            }, 3000);
+
+            $pagesLis.mouseover(function () {
+                stop = true;//自动播放结束
+                index = $pagesLis.index($(this));
+                $("ul#imgArea").stop(true, true).animate({"marginTop": -mainDivh * index}, 1000);//清空动画序列，立即完成动画
+                $pagesLis.eq(index).addClass("active").siblings().removeClass("active");//当前播放图片编号高亮显示
+            }).mouseout(function () {
+                stop = false;
+            });
+
+
+        })
+    </script>
+</head>
+<body>
+<div id="main">
+    <ul id="imgArea">
+        <li><a href="#"><img src="images/list1.jpg" width="350" height="300"/> </a></li>
+        <li><a href="#"><img src="images/list2.jpg" width="350" height="300"/> </a></li>
+        <li><a href="#"><img src="images/list3.jpg" width="350" height="300"/> </a></li>
+        <li><a href="#"><img src="images/list4.jpg" width="350" height="300"/> </a></li>
+    </ul>
+    <ul id="imgID">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+</body>
+</html>

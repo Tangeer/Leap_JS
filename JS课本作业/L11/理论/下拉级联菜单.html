@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>普通下拉菜单</title>
+    <style>
+        *{margin:0px;
+            padding:0px;
+        }
+        body{ font-size:12px;}
+        div#container{
+            width:500px;
+            margin:0px auto;
+        }
+        #menu ul{list-style:none;
+        }
+        #menu ul.first{
+            height:43px;
+            background-image:url(images/menu-bg.gif);
+            background-repeat:repeat-x;
+        }
+        #menu ul.first li{
+            float:left;
+        }
+        #menu ul.first li a{
+            padding:0px 15px;
+            height:43px;
+            line-height:43px;
+            text-decoration:none;
+            /*display:block;*/
+            text-align:center;
+        }
+        #menu ul.first li ul li{
+            float:none;
+            position:relative;
+        }
+        /*下级菜单*/
+        #menu ul.first li ul li a{
+            height:18px;
+            line-height:18px;
+            /*display:block;*/
+            color:white;
+        }
+        /*li下的ul菜单*/
+        #menu ul.first li ul{
+            border:2px solid blue;
+            display:none;
+            position:absolute;	/*脱离文档流*/
+            background-color:#ccc;
+        }
+        div#content{
+            width:500px;
+            height:200px;
+            background-color:#9C0;
+            text-align:center;
+            font:bold 15px Verdana, Geneva, sans-serif;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script>
+        $(function(){
+            $("#menu>ul>li").hover(function(){ //鼠标移入到顶级菜单项,对应的二级菜单滑入
+                $(this).children('ul').stop().slideDown('fast');
+            },function(){ // 鼠标移出顶级菜单项，对应的二级菜单滑出
+                $(this).children('ul').stop().slideUp('fast');
+            });
+            $('#menu>ul>li>ul li').hover(function(){ // 鼠标移入到第二级菜单，对应的三级菜单滑入
+                var subMenuWidth=$(this).parent().width();  //二级菜单的宽度，即是三级菜单水平偏移的距离
+                $(this).children('ul').css({"width":"100px","top":"0px","left":subMenuWidth})
+                    .stop()
+                    .slideDown('fast'); //设置三级菜单的css属性和滑入效果
+            },function(){ //鼠标移出二级菜单项，对应的三级级菜单滑出
+                $(this).children('ul').stop().slideUp('fast');
+            });
+        });
+
+    </script>
+</head>
+<body>
+<div id="container"> <!--顶级容器-->
+    <div id="menu">
+        <ul class="first" id="nav"> <!--顶级菜单-->
+            <li><a href="#">首页</a></li>
+            <li><a href="#">文化</a>
+                <ul><!--二级菜单-->
+                    <li><a href="#">企业文化</a></li>
+                    <li><a href="#">企业精神</a></li>
+                    <li><a href="#">经营理念</a></li>
+                </ul>
+            </li>
+            <li><a href="#">新闻</a>
+                <ul>
+                    <li><a href="#">公司新闻</a></li>
+                    <li><a href="#">产品发布新闻</a></li>
+
+                </ul>
+            </li>
+            <li><a href="#">招聘</a>
+                <ul>
+                    <li><a href="#">企业招聘</a>
+                    </li>
+                    <li><a href="#">个人求职</a>
+                        <ul>
+                            <li><a href="#">java工程师</a></li>
+                            <li><a href="#">.net工程师</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">联系我们</a></li>
+                    <li><a href="#">51job</a>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+    </div><!--菜单版块结束-->
+    <div id="content">网页的主要内容</div>
+</div>
+</body>
+</html>

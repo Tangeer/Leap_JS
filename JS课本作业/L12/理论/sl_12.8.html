@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手风琴</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <link href="css/jquery-ui-1.10.4.custom.min.css" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        body{
+            font-size:12px;
+        }
+        div#accordion{
+            width:600px;
+            margin:0px auto;
+        }
+        div#accordion h3{
+            padding:5px;
+            border:1px solid #ccc;
+            background-color:#eee;
+            cursor:pointer;
+
+        }
+        div#accordion div{
+            padding:5px;
+            border:1px solid #ccc;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function(){
+            $("#accordion").accordion();
+        });
+    </script>
+</head>
+
+<body>
+<div id="accordion">
+    <h3>Section 1</h3> <!--标题-->
+    <div>
+        <p> Mauris mauris ante, blandit et, 。。。 </p>
+    </div>
+    <h3>Section 2</h3>
+    <div>
+        <p> Sed non urna. Donec et ante。。。 </p>
+    </div>
+    <h3>Section 3</h3>
+    <div>
+        <p> Nam enim risus, 。。。</p>
+        <ul>
+            <li>List item one</li>
+            <li>List item two</li>
+            <li>List item three</li>
+        </ul>
+    </div>
+    <h3>Section 4</h3>
+    <div>
+        <p> Cras dictum. 。。。 </p>
+        <p> Suspendisse 。。。 </p>
+    </div>
+</div>
+</body>
+</html>

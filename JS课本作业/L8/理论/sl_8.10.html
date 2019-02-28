@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建节点元素</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#song").blur(function () {
+                var $li = $("<li>"+$(this).val()+"</li>");
+                $li.prependTo($("ul"));
+            })
+        })
+
+    </script>
+</head>
+<body>
+流行歌曲：
+<ul>
+    <li>想起——韩雪</li>
+    <li>没那么简单——黄小琥</li>
+    <li>指望——郁可唯</li>
+</ul>
+请添加：<input type="text" id="song">
+</body>
+</html>
